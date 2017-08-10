@@ -16,7 +16,7 @@ def hello():
     msg = """<html>
             <body>
 
-            <h1>Helloe!!!</h1>
+            <h1>Hello!!!</h1>
 
             <p>Node IP: {}</p>
             <p>Caller IP: {}</p>
