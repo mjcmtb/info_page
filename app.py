@@ -5,6 +5,14 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
 
+    try:
+        source_ip = request.headers.getlist("X-Forwarded-For")[0]
+    except:
+        source_ip = request.remote_addr
+
+    if source_ip == "127.0.0.1":
+        source_ip = request.remote_addr
+
     msg = """<html>
             <body>
 
@@ -15,7 +23,7 @@ def hello():
             <p>Timestamp: {}</p>
 
             </body>
-            </html>""".format(get_interface_ip(),request.remote_addr,get_dt())
+            </html>""".format(get_interface_ip(),source_ip,get_dt())
 
     return msg
 
